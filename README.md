@@ -2,13 +2,16 @@
 
 A simple gripper library to use a Universal Robot with an onRobot gripper, no onrobot compute box needed!
 
+
+
 - Simple and easy to use!
 - No onRobot compute box needed!
 - Communicates with XML-RPC interface so is compatible with ROS driver!
+- Supports RG2 only, more coming soon!
 
 # Install instructions
 
-``` 
+```bash
 
 pip install onrobot
 
