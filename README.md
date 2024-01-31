@@ -20,12 +20,12 @@ pip install onrobot
 # Example Usage
 
 ```python
-from onRobot import RG2
+import onRobot.gripper as gripper
 
 # Default id is zero, if you have multiple grippers, 
 # see logs in UR Teach Pendant to know which is which :)
 rg_id = 0
-rg_gripper = RG2(rg_id)
+rg_gripper = gripper.RG2(rg_id)
 
 rg_width = rg_gripper.get_rg_width()
 pregrasp_width = 100
