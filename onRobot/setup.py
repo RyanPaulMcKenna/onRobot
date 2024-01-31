@@ -11,10 +11,11 @@ setup(
     packages=['onRobot'],
     install_requires=[],
     classifiers=[
-        'Development Status :: 1 - Ready for use with RG2 Gripper only',
-        'Intended Audience :: Robotics research/Owners of universal robot and onrobot gripper',
+        'Development Status :: 1 - Planning',
+        'Intended Audience :: Science/Research',
         'License :: OSI Approved :: BSD License',  
         'Operating System :: POSIX :: Linux',        
-        'Programming Language :: Python :: 2 or 3',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
     ],
 )
