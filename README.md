@@ -1,6 +1,12 @@
 # onRobot
 
-A simple gripper library to use a Universal Robot with an onRobot gripper, no onrobot compute box needed!
+
+![](./UOY-logo.svg)
+
+Developed at The University of York
+
+A simple gripper library to use a Universal Robot with an onRobot gripper, no onrobot compute box needed.
+
 
 **See further down for usage examples**
 
