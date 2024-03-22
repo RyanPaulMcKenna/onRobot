@@ -2,8 +2,9 @@ import requests
 import xmlrpc.client
 
 class RG2:
-    def __init__(self, robot_ip:="192.168.56.101":str, rg_id: int = 0) -> None:
+    def __init__(self, robot_ip :str="192.168.56.101", rg_id: int = 0) -> None:
         self.rg_id = rg_id
+        self.robot_ip = robot_ip
 
     def get_rg_width(self) -> float:
         xml_request = f"""<?xml version="1.0"?>
@@ -21,7 +22,7 @@ class RG2:
         }
         data = xml_request.replace('\r\n','').encode()
         try:
-            response = requests.post(f'http://{robot_ip}:41414', headers=headers, data=data)
+            response = requests.post(f'http://{self.robot_ip}:41414', headers=headers, data=data)
 
             if (response.status_code==200):
                 #print(response.text)
