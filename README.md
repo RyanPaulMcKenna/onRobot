@@ -28,23 +28,18 @@ pip install onrobot
 ```python
 import onRobot.gripper as gripper
 
-# Default id is zero, if you have multiple grippers, 
-# see logs in UR Teach Pendant to know which is which :)
 rg_id = 0
-rg_gripper = gripper.RG2(rg_id)
+ip = "192.168.56.101"
+rg_gripper = gripper.RG2(ip,rg_id)
 
 rg_width = rg_gripper.get_rg_width()
-pregrasp_width = 100
+print("rg_width: ",rg_width)
 
-# force and width units described in onRobot RG2 Manual
-target_width = 15.66
 target_force = 40.00
 
-if (rg_wdith == pregrasp_width):
-    rg_gripper.rg_grip(target_width, target_force)
+rg_gripper.rg_grip(100.0, target_force)
 
-epsilon = 0.05 # Just an example of reasonable error may not be realistic. 
-grip_success = abs(rg_gripper.get_rg_width() - target_width) < epsilon
+
 
 ```
 
