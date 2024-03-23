@@ -1,12 +1,13 @@
-import requests
+import pycurl
 import xmlrpc.client
+from io import BytesIO
 
 class RG2:
-    def __init__(self, robot_ip :str="192.168.56.101", rg_id: int = 0) -> None:
+    def __init__(self, robot_ip, rg_id):
         self.rg_id = rg_id
         self.robot_ip = robot_ip
 
-    def get_rg_width(self) -> float:
+    def get_rg_width(self):
         xml_request = f"""<?xml version="1.0"?>
     <methodCall>
         <methodName>rg_get_width</methodName>
@@ -17,36 +18,52 @@ class RG2:
             </params>
     </methodCall>"""
 
-        headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        }
-        data = xml_request.replace('\r\n','').encode()
-        try:
-            response = requests.post(f'http://{self.robot_ip}:41414', headers=headers, data=data)
+        headers = ["Content-Type: application/x-www-form-urlencoded"]
 
-            if (response.status_code==200):
-                #print(response.text)
-                xml_response = xmlrpc.client.loads(response.text)
-                rg_width = float(xml_response[0][0])
-                #print(rg_width)
-                return rg_width
-        except requests.HTTPError as e:
-            # should actually write this to ros logs, I think?
-            print("XMLRPC-HTTP Error: ",e)
+        data = xml_request.replace('\r\n','').encode()
+
+        # Create a new cURL object
+        curl = pycurl.Curl()
+
+        # Set the URL to fetch
+        curl.setopt(curl.URL, f'http://{self.robot_ip}:41414')
+        curl.setopt(curl.HTTPHEADER, headers)
+        curl.setopt(curl.POSTFIELDS, data)
+        # Create a BytesIO object to store the response
+        buffer = BytesIO()
+        curl.setopt(curl.WRITEDATA, buffer)
+
+        # Perform the request
+        curl.perform()
+
+        # Get the response body
+        response = buffer.getvalue()
+
+        # Print the response
+        print(response.decode('utf-8'))
+
+        # Close the cURL object
+        curl.close()
+
+        xml_response = xmlrpc.client.loads(response.decode('utf-8'))
+        rg_width = float(xml_response[0][0])
+        #print(rg_width)
+        return rg_width
+
 
     def rg_grip(self, target_width: float = 100, target_force: float= 10) -> bool:
         #assert target_width <= 100 and target_width >= 0, 'Target Width must be within the range [0,100]'
         #assert target_force <= 40 or target_force >= 0, 'Target force must be within the range [0,40]'
 
         # WARNING: params will be sent straight to electrical system with no error checking on robot!
-        if (target_width > 100):
-            target_width = 100
-        if(target_width < 0):
-            target_width = 0
-        if(target_force > 40):
-            target_force = 40
-        if(target_force < 0):
-            target_force = 0
+        # if (target_width > 100):
+        #     target_width = 100
+        # if(target_width < 0):
+        #     target_width = 0
+        # if(target_force > 40):
+        #     target_force = 40
+        # if(target_force < 0):
+        #     target_force = 0
 
         xml_request = f"""<?xml version="1.0"?>
     <methodCall>
@@ -64,21 +81,50 @@ class RG2:
         </params>
     </methodCall>"""
 
-        headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        }
+        headers = ["Content-Type: application/x-www-form-urlencoded"]
+
+        # headers = ["User-Agent: Python-PycURL", "Accept: application/json"]
         data = xml_request.replace('\r\n','').encode()
-        try:
-            response = requests.post('http://192.168.0.99:41414', headers=headers, data=data)
+        # Create a new cURL object
+        curl = pycurl.Curl()
 
-            if (response.status_code==200):
-                #print(response.text)
-                #xml_response = xmlrpc.client.loads(response.text)
-                return True
-            else:
-                return False
-                
-        except requests.HTTPError as e:
-            # should actually write this to ros logs, I think?
-            print("XMLRPC-HTTP Error: ",e)
+        # Set the URL to fetch
+        curl.setopt(curl.URL, f'http://{self.robot_ip}:41414')
+        curl.setopt(curl.HTTPHEADER, headers)
+        curl.setopt(curl.POSTFIELDS, data)
+        # Create a BytesIO object to store the response
+        buffer = BytesIO()
+        curl.setopt(curl.WRITEDATA, buffer)
 
+        # Perform the request
+        curl.perform()
+
+        # Get the response body
+        response = buffer.getvalue()
+
+        # Print the response
+        print(response.decode('utf-8'))
+
+        # Close the cURL object
+        curl.close()
+
+def main():
+
+    # Default id is zero, if you have multiple grippers, 
+    # see logs in UR Teach Pendant to know which is which :)
+    print("Main")
+    rg_id = 0
+    ip = "192.168.56.101"
+    rg_gripper = RG2(ip,rg_id)
+
+    rg_width = rg_gripper.get_rg_width()
+    print("rg_width: ",rg_width)
+    
+    target_force = 40.00
+
+    rg_gripper.rg_grip(100.0, target_force)
+
+
+
+if __name__ == "__main__":
+    main()
