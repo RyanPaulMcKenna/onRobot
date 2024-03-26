@@ -7,6 +7,16 @@ Developed at The University of York
 
 A simple gripper library to use a Universal Robot with an onRobot gripper, no onrobot compute box needed.
 
+# Supported onRobot Grippers
+- [x] RG2
+- [x] VG10
+- [ ] Gecko
+- [ ] SG
+- [ ] TFG
+- [ ] SDR
+- [ ] 2FG
+- [ ] MG
+- [ ] FGP
 
 **See further down for usage examples**
 
@@ -44,7 +54,7 @@ rg_gripper.rg_grip(100.0, target_force)
 ```
 
 
-# Functions to be implemented for the RG2
+# Functions implemented for the RG2
 
 - [ ] rg_stop
 - [x] rg_grip
@@ -69,3 +79,11 @@ rg_gripper.rg_grip(100.0, target_force)
 - [ ] rg_get_s2_triggered
 - [ ] rg_get_safety_failed
 - [ ] rg_set_fingertip_offset
+
+
+# Functions implemented for the VG10
+- [x] vg10_grip
+- [x] vg10_release
+- [] vg10_idle
+- [] vg10_get_vacuum
+- [] vg10_get_all_double_variables
