@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<methodCall>
+   <methodName>vg10_release</methodName>
+      <params>
+            <param>
+            <value><int>0</int></value>
+            </param>
+            <param>
+            <value><boolean>1</boolean></value>
+            </param>
+            <param>
+            <value><boolean>1</boolean></value>
+            </param>
+      </params>
+</methodCall>
+
+

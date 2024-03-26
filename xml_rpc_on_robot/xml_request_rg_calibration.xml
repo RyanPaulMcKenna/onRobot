@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<methodCall>
+   <methodName>rg_calibration</methodName>
+      <params>  
+        <param>
+            <double>1.1</double>
+        </param>
+      </params>
+</methodCall>

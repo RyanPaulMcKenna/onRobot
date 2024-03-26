@@ -1,0 +1,43 @@
+# To do list
+
+Now I can control robot through ext ctrl and move with ros controllers.
+
+I can also move the onRobot gripper, however I want to without it interferring with ros
+or the ext control program in anyway.
+
+I need to put all this behaviour in a fully abstracted ros node.
+
+This method is purely using http requests to send xml files to the xmlrpc server.
+
+So I wil need to save most recent values of gripper set to keep them up to date
+for my whole ros program.
+
+1. change robot description to the one that has the onRobot rg2 gripper.
+    do this in the the standard launch command and in rviz, you can now also use move it
+    if neccessary.
+2. You will to write some classes and files that abstract this networking and interface with ros
+   neatly as a package would. Keep track of gripper variables and use them to update rviz.
+   rviz likely just subscribes to some topic that makes them available you just need to
+   make a publisher and link it up.
+
+Here are the commands I used to work it out:
+curl -X POST -d @xml_request_add.xml 192.168.0.99:41414
+curl -X POST -d @xml_request_add.xml 192.168.0.99:31416
+
+If use extra sensors I can wire them into the power and analog inputs on the control box.
+
+Somehow need to read from these analog inputs passively in a way that doesn't interfere with
+ros or the http requests for the gripper.
+
+Maybe I can set up on robot fieldbus or modbus that or a just a socat device that can read from those
+analog inputs and set the values in registers that I can access by modbus client on my machine
+
+
+
+
+All the info about move it and rviz is here 
+https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/blob/master/ur_robot_driver/doc/usage_example.md
+
+
+Here is the urdf
+https://github.com/AndrejOrsula/ur5_rg2_ign

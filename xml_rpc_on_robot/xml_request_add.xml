@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<methodCall>
+   <methodName>add</methodName>
+      <params>
+         <param>
+            <value><int>111</int></value>
+         </param>
+         <param>
+            <value><int>222</int></value>
+         </param>
+      </params>
+</methodCall>

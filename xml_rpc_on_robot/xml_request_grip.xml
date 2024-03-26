@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<methodCall>
+   <methodName>rg_grip</methodName>
+      <params>
+         <param>
+            <value><int>0</int></value>
+         </param>
+         <param>
+            <value><double>30.0</double></value>
+         </param>
+         <param>
+            <value><double>0.6</double></value>
+         </param>
+      </params>
+</methodCall>

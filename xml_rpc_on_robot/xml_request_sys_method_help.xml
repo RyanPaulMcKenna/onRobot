@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<methodCall>
+   <methodName>system.methodSignature</methodName>
+      <params>
+        <param>
+            <value><string>vg10_release</string></value>
+        </param>
+      </params>
+</methodCall>
