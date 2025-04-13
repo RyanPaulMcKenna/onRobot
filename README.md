@@ -6,6 +6,9 @@
 Developed at The University of York
 
 A simple gripper library to use a Universal Robot with an onRobot gripper, no onrobot compute box needed.
+Please note you must install the URcap file on the UR teach pendant.
+You must also have set all the correct IP addresses in the networking settings of the UR Teach Pendant and the computer you are connecting to the Robot via the ethernet.
+
 
 # Supported onRobot Grippers
 - [x] RG2
