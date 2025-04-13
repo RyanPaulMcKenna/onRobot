@@ -13,6 +13,7 @@ You must also have set all the correct IP addresses in the networking settings o
 # Supported onRobot Grippers
 - [x] RG2
 - [x] VG10
+- [x] 2FG
 - [ ] Gecko
 - [ ] SG
 - [ ] TFG
