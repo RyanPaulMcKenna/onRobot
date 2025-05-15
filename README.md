@@ -27,7 +27,8 @@ You must also have set all the correct IP addresses in the networking settings o
 - Simple and easy to use!
 - No onRobot compute box needed!
 - Communicates with XML-RPC interface so is compatible with ROS driver!
-- Supports RG2 only, more coming soon!
+- Contributions welcome!
+- onRobot URcap must be installed on Universal Robots Teach Pendant.
 
 # Install instructions
 
