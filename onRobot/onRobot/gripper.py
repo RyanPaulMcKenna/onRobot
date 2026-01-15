@@ -106,7 +106,7 @@ class VG10:
         curl.close()
 
 
-class RG2:
+class RG:
     def __init__(self, robot_ip, rg_id):
         self.rg_id = rg_id
         self.robot_ip = robot_ip
@@ -213,7 +213,7 @@ class RG2:
         curl.close()
 
 
-class TwoFG7():
+class TwoFG():
     def __init__(self, robot_ip: str, id: int):
         self.robot_ip = robot_ip
         self.id = id
