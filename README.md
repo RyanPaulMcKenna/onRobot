@@ -54,7 +54,7 @@ rg_gripper.rg_grip(100.0, target_force)
 ```
 
 
-# Functions implemented for the RG2
+# Functions implemented for the RG2 (Should work with all RG variants)
 
 - [ ] rg_stop
 - [x] rg_grip
