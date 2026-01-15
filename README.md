@@ -6,9 +6,9 @@ You must also have set all the correct IP addresses in the networking settings o
 
 
 # Supported onRobot Grippers
-- [x] RG2
-- [x] VG10
-- [x] 2FG7 
+- [x] RG
+- [x] VG
+- [x] TwoFG 
 - [ ] Gecko
 - [ ] SG
 - [ ] TFG
@@ -40,7 +40,7 @@ import onRobot.gripper as gripper
 
 rg_id = 0
 ip = "192.168.56.101"
-rg_gripper = gripper.RG2(ip,rg_id)
+rg_gripper = gripper.RG(ip,rg_id)
 
 rg_width = rg_gripper.get_rg_width()
 print("rg_width: ",rg_width)
